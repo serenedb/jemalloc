@@ -651,6 +651,9 @@ pac_maybe_decay_purge(tsdn_t *tsdn, pac_t *pac, decay_t *decay,
 	if (eagerness == PAC_PURGE_ALWAYS
 	    || (epoch_advanced && eagerness == PAC_PURGE_ON_EPOCH_ADVANCE)) {
 		size_t npages_limit = decay_npages_limit_get(decay);
+		if (npages_current > decay->nunpurged) {
+			npages_limit += npages_current - decay->nunpurged;
+		}
 		pac_decay_try_purge(tsdn, pac, decay, decay_stats, ecache,
 		    npages_current, npages_limit);
 	}
