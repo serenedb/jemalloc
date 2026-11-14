@@ -617,7 +617,7 @@ base_alloc_edata(tsdn_t *tsdn, base_t *base) {
 	if (config_stats) {
 		base->edata_allocated += usize;
 	}
-	edata_esn_set(edata, esn);
+	edata_esn_init(edata, esn);
 	return edata;
 }
 

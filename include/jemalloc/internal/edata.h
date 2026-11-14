@@ -528,6 +528,11 @@ edata_esn_set(edata_t *edata, size_t esn) {
 }
 
 static inline void
+edata_esn_init(edata_t *edata, size_t esn) {
+	edata->e_size_esn = esn & EDATA_ESN_MASK;
+}
+
+static inline void
 edata_bsize_set(edata_t *edata, size_t bsize) {
 	edata->e_bsize = bsize;
 }
